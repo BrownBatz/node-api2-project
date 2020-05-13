@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 /*            GET SPECIFIC POST           */
 
 router.get('/:id/', (req, res) => {
-    const id = req.params;
+    const params = req.params;
     console.log(id);
     dbHelpers.findById(id.id)
         .then(post => {
@@ -35,7 +35,7 @@ router.get('/:id/', (req, res) => {
 
 router.get('/:id/comments/', (req, res) => {
     const id = req.params;
-    dbHelpers.findPostComments(id)
+    dbHelpers.findPostComments(id.id)
         .then(comments => {
             res.status(200).send(comments);
         })
@@ -75,7 +75,9 @@ router.post('/', (req, res) => {
 });
 
 /*            ADD NEW COMMENT ON POST              */
-
+router.post('/:id/comments/', (req, res) => {
+    
+});
 
 
 // exports
